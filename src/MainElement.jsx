@@ -1,6 +1,12 @@
 import {useEffect, useState} from "react";
 import Food from "./Food";
 
+const imagesForFoods = {
+"Pan con salame": "",
+"Pan con jamon": "",
+"Pan": "",
+}
+
 
 export function MainElement() {
 	const [foods, changeFoods] = useState(() => [<><h2>Cargando...</h2></>])
@@ -15,22 +21,20 @@ export function MainElement() {
 						console.log(food)
 						Foods.push((<li>
 							<Food name={food['name']} />
-							<p>{food['amount']}</p>
+							<p className="font-light">{food['amount']}</p>
 						</li>))
 						changeFoods(Foods)
 					}
-
 				}
 			})
-	}, []);
+}, []);
 
 	return (<>
 		<section>
-			<h2 className="text-4xl">comida disponible</h2>
+			<h2 className="text-4xl font-bold">comida disponible</h2>
 			<ul>
 				{foods}
 			</ul>
 		</section>
 	</>)
-
 }
