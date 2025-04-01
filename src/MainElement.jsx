@@ -1,11 +1,13 @@
 import {useEffect, useState} from "react";
 import Food from "./Food";
 import breadWithSalami from './asset/breadWithSalami.glb'
+import breadWithHam from './asset/breadWithHam.glb'
+import bread from './asset/bread.glb'
 
 const imagesForFoods = {
-"Pan con salame": breadWithSalami,
-"Pan con jamon": "",
-"Pan": "",
+	"Pan con salame": breadWithSalami,
+	"Pan con jamon": breadWithHam,
+	"Pan": bread,
 }
 
 
@@ -17,18 +19,21 @@ export function MainElement() {
 			.then(json => {
 				let Foods = []
 				for (let index in json['data']) {
+
 					let food = json['data'][index]
-					if (index > 0) {
+					let foodName = food['name']
+					let foodAmount = food['amount']
+					if (index > 0 && foodAmount > 0) {
 						console.log(food)
-						Foods.push((<li>
-							<Food name={food['name']} />
-							<p className="font-light">{food['amount']}</p>
+						Foods.push((<li key={index - 1}>
+							<Food name={foodName} source={imagesForFoods[foodName]} />
+							<p className="font-light">{foodAmount}</p>
 						</li>))
 						changeFoods(Foods)
 					}
 				}
 			})
-}, []);
+	}, []);
 
 	return (<>
 		<section>
