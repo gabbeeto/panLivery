@@ -33,7 +33,7 @@ export function MainElement() {
 							<Food name={foodName} source={imagesForFoods[foodName]} />
 							<p className="text-green-800 dark:text-green-200 font-bold">{price}$ por unidad</p>
 							<p className="text-green-800 dark:text-green-200 font-bold">{ Math.round((price * 6) / 100) * 100 }$ la media docena </p>
-							<p className="text-green-800 dark:text-green-200 font-bold">{Math.round((price * 12) / 100) * 100}$ la docena </p>
+							<p className="text-green-800 dark:text-green-200 font-bold">{(Math.round((price * 12) / 100) * 100) -100}$ la docena </p>
 						</li>))
 						changeFoods(Foods)
 					}
