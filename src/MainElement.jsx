@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 import Food from "./Food";
+import breadWithSalami from './asset/breadWithSalami.glb'
 
 const imagesForFoods = {
-"Pan con salame": "",
+"Pan con salame": breadWithSalami,
 "Pan con jamon": "",
 "Pan": "",
 }
