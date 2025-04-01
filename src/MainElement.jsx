@@ -29,8 +29,9 @@ export function MainElement() {
 					console.log(food)
 					if (thereisFoodAvailable) {
 						Foods.push((<li className="border-black dark:border-white border-2 pb-6 rounded-4xl gap-2" key={index - 1}>
-							<Food name={foodName} source={imagesForFoods[foodName]} />
+
 							<p className="dark:text-blue-200 text-blue-900 text-2xl bg-amber-200 dark:bg-amber-900 font-extrabold">{foodAmount}</p>
+							<Food name={foodName} source={imagesForFoods[foodName]} />
 
 							<p className="text-green-800 dark:text-green-200 font-bold">{price}$u </p>
 							<p className="text-green-800 dark:text-green-200 font-bold">{price * 6}$ la media docena </p>
