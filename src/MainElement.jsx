@@ -14,7 +14,6 @@ const imagesForFoods = {
 export function MainElement() {
 	const [foods, changeFoods] = useState(() => [<><h2>Cargando...</h2></>])
 	const url = "https://script.google.com/macros/s/AKfycbxS4WBLgbxPxniLrl5dxqdbxtpPdZhgPLyCd0IrkOV0cCsHSIqLBUa57LgVFa-N6gNm/exec"
-
 	useEffect(() => {
 		fetch(url).then(response => response.json())
 			.then(json => {
@@ -32,8 +31,7 @@ export function MainElement() {
 
 							<p className="dark:text-blue-200 text-blue-900 text-2xl bg-amber-200 dark:bg-amber-900 font-extrabold">{foodAmount}</p>
 							<Food name={foodName} source={imagesForFoods[foodName]} />
-
-							<p className="text-green-800 dark:text-green-200 font-bold">{price}$u </p>
+							<p className="text-green-800 dark:text-green-200 font-bold">{price}$ por unidad</p>
 							<p className="text-green-800 dark:text-green-200 font-bold">{price * 6}$ la media docena </p>
 							<p className="text-green-800 dark:text-green-200 font-bold">{price * 12}$ la docena </p>
 						</li>))
@@ -53,24 +51,24 @@ export function MainElement() {
 		let hoursLeft = 15 - hour;
 		let minutesLeft = 60 - minutes;
 		if (dayOfWeek == 5) {
-			output.innerHTML = `faltan 2 dias para abrir`;
+			output.innerHTML = `<span class="dark:text-red-200 text-red-700">Faltan 2 dias para abrir</span>`;
 		}
 		else if (dayOfWeek == 6) {
-			output.innerHTML = `faltan 1 dia para abrir`;
+			output.innerHTML = `<span class="dark:text-red-200 text-red-700">Faltan 1 dia para abrir</span>`;
 		}
 		else if (hour < 14) {
-			output.innerHTML = `faltan ${hoursLeft} horas y ${minutesLeft} minutos para abrir`;
+			output.innerHTML = `<span class="dark:text-red-200 text-red-700">Faltan ${hoursLeft} horas y ${minutesLeft} minutos para abrir</span>`;
 		}
 		if (hour == 14) {
-			output.innerHTML = `faltan una hora y ${minutesLeft} minutos para abrir`;
+			output.innerHTML = `<span class="dark:text-red-200 text-red-700">Faltan una hora y ${minutesLeft} minutos para abrir</span>`;
 		}
 
 		if (hour == 15) {
-			output.innerHTML = `faltan ${minutesLeft} minutos para abrir`;
+			output.innerHTML = `<span class="dark:text-red-200 text-red-700">Faltan ${minutesLeft} minutos para abrir</span>`;
 		}
 
 		if (hour > 15) {
-			output.innerHTML = `local abierto`;
+			output.innerHTML = `<span class="dark:text-green-200 text-green-700">Abierto</span>`;
 		}
 
 
@@ -84,7 +82,7 @@ export function MainElement() {
 	return (<>
 		<section className="border-black dark:border-white border-2 rounded-3xl pb-5 pt-5 mt-1 mx-2">
 			<h2 className="text-4xl font-bold">Está abierto de lunes a viernes de 16:00 hasta 20:00</h2>
-			<div className="bg-amber-200 dark:bg-amber-900">
+			<div className="bg-amber-200 flex flex-col rounded-3xl mx-5 dark:bg-amber-900">
 				<p className="text-4xl font-bold">Estado:</p>
 				<output></output>
 			</div>
